@@ -1,0 +1,67 @@
+language: php
+
+cache:
+  directories:
+    - $HOME/.build/phpstan
+    - $HOME/.build/phpunit
+    - $HOME/.composer/cache
+
+stages:
+  - style
+  - test
+
+jobs:
+  include:
+    - stage: Style
+
+      php: 7.3
+
+      before_install:
+        - composer validate
+
+      install:
+        - composer install
+
+      script:
+        - vendor/bin/ecs check src --no-progress-bar -vvv
+
+    - &TEST
+
+      stage: Test
+
+      php: 7.2
+
+      env: WITH_LOCKED=true
+
+      before_install:
+        - composer validate
+
+      install:
+        - if [[ "$WITH_LOWEST" == "true" ]]; then composer update --prefer-lowest; fi
+        - if [[ "$WITH_LOCKED" == "true" ]]; then composer install; fi
+        - if [[ "$WITH_HIGHEST" == "true" ]]; then composer update; fi
+
+      script:
+        - vendor/bin/ecs check src --no-progress-bar -vvv
+        - vendor/bin/phpunit
+
+    - <<: *TEST
+
+      php: 7.3
+
+      env: WITH_LOWEST=true
+
+    - <<: *TEST
+
+      php: 7.3
+
+      env: WITH_LOCKED=true
+
+    - <<: *TEST
+
+      php: 7.3
+
+      env: WITH_HIGHEST=true
+
+notifications:
+  email: false

@@ -1,0 +1,12 @@
+parameters:
+    sourceNamespace: Your\Source\Namespace
+    allowedExceptionNamespace: Your\Exception
+
+services    :
+    -
+        class: Musement\PHPStan\Rules\CheckExceptionInNamespace
+        arguments:
+            sourceNamespace: %sourceNamespace%
+            allowedExceptionNamespace: %allowedExceptionNamespace%
+        tags:
+            - phpstan.rules.rule
