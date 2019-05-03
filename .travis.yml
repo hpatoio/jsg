@@ -2,7 +2,7 @@ language: php
 
 cache:
   directories:
-    - $HOME/.build/phpstan
+    - $HOME/.build/my-project
     - $HOME/.build/phpunit
     - $HOME/.composer/cache
 
