@@ -25,12 +25,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Musement\\MyClass\\": "src/"
+      "Musement\\JsonSchema\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Musement\\MyClass\\Test\\": "test/"
+      "Musement\\JsonSchema\\Test\\": "test/"
     }
   },
   "support": {
