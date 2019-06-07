@@ -12,7 +12,7 @@ final class TypeObject extends JsonSchemaType
 
     private $properties;
 
-    public function __construct(string $schema, string $id, string $title)
+    public function __construct(string $name, string $schema, string $id, string $title)
     {
         $this->schema = $schema;
         $this->id = $id;

@@ -13,14 +13,14 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 
 	public function testTypeStringIsCreatedWithTypeString()
 	{
-		$mySchema = new TypeString("My sting");
+		$mySchema = new TypeString("foo","My sting");
 		$this->assertSame("string", $mySchema->getType());
 	}
 
 	public function testTypeStringThrowExceptionIfMinLengthIsHigherThanMaxLength()
 	{
 		$this->expectException(\InvalidArgumentException::class);
-		$myString = new TypeString("My string");
+		$myString = new TypeString("foo","My string");
 		$myString->setMaxLength(10);
 		$myString->setMinLength(11);
 	}
@@ -28,14 +28,14 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 	public function testTypeStringThrowExceptionIfMaxLengthIsLowerThanMinLength()
 	{
 		$this->expectException(\InvalidArgumentException::class);
-		$myString = new TypeString("My string");
+		$myString = new TypeString("foo","My string");
 		$myString->setMinLength(11);
 		$myString->setMaxLength(10);
 	}
 
 	public function testTypeStringCanBeCreateWithSameMaxLengthAndMinLength()
 	{
-		$myString = new TypeString("My string");
+		$myString = new TypeString("foo","My string");
 		$myString->setMinLength(10);
 		$myString->setMaxLength(10);
 
@@ -46,21 +46,21 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 	public function testSetInvalidPatterThrowException()
 	{
 		$this->expectException(\InvalidArgumentException::class);
-		$myString = new TypeString("My string");
+		$myString = new TypeString("foo","My string");
 		$myString->setPatter("^(0-9]{3}))?[0-9]{3}-[0-9]{4}$");
 	}
 
 	public function testSetNegativeMinLenghtThrowException()
 	{
 		$this->expectException(\InvalidArgumentException::class);
-		$myString = new TypeString("My string");
+		$myString = new TypeString("foo","My string");
 		$myString->setMinLength(-1);
 	}
 
 	public function testSetMaxLenghtLowerThanOneThrowException()
 	{
 		$this->expectException(\InvalidArgumentException::class);
-		$myString = new TypeString("My string");
+		$myString = new TypeString("foo","My string");
 		$myString->setMaxLength(0);
 	}
 

@@ -6,76 +6,70 @@ namespace Musement\JsonSchema\Types;
 
 class TypeString extends JsonSchemaType
 {
+    private $minLength;
+    private $maxLength;
+    private $patter;
 
-	private $minLength;
-	private $maxLength;
-	private $patter;
+    // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
+    const BELL = "\x07";
 
-	// Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
-	const BELL = "\x07";
-
-	public function __construct(string $description)
+    public function __construct(string $name, string $description)
     {
         $this->description = $description;
         $this->type = 'string';
     }
 
-	public function getMinLength()
-	{
-		return $this->minLength;
-	}
+    public function getMinLength()
+    {
+        return $this->minLength;
+    }
 
-	public function setMinLength(int $minLength): void
-	{
+    public function setMinLength(int $minLength): void
+    {
+        if ($minLength < 0) {
+            throw new \InvalidArgumentException('Min length must be higher that zero');
+        }
 
-		if ($minLength < 0) {
-			throw new \InvalidArgumentException('Min length must be higher that zero');
-		}
+        if (null !== $this->maxLength && $minLength > $this->maxLength) {
+            throw new \InvalidArgumentException('Min length higher that max length');
+        }
 
-		if (null !== $this->maxLength && $minLength > $this->maxLength) {
-			throw new \InvalidArgumentException('Min length higher that max length');
-		}
+        $this->minLength = $minLength;
+    }
 
-		$this->minLength = $minLength;
-	}
+    public function getMaxLength()
+    {
+        return $this->maxLength;
+    }
 
-	public function getMaxLength()
-	{
-		return $this->maxLength;
-	}
+    public function setMaxLength(int $maxLength): void
+    {
+        if ($maxLength < 1) {
+            throw new \InvalidArgumentException('Max length must be higher that one');
+        }
 
-	public function setMaxLength(int $maxLength): void
-	{
+        if (null !== $this->minLength && $maxLength < $this->minLength) {
+            throw new \InvalidArgumentException('Max length lower that min length');
+        }
 
-		if ($maxLength < 1) {
-			throw new \InvalidArgumentException('Max length must be higher that one');
-		}
+        $this->maxLength = $maxLength;
+    }
 
-		if (null !== $this->minLength && $maxLength < $this->minLength) {
-			throw new \InvalidArgumentException('Max length lower that min length');
-		}
+    public function getPatter()
+    {
+        return $this->patter;
+    }
 
-		$this->maxLength = $maxLength;
-	}
+    public function setPatter($patter): void
+    {
+        // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
 
-	public function getPatter()
-	{
-		return $this->patter;
-	}
+        $match = @preg_match(self::BELL.$patter.self::BELL.'u', 'dummy_data');
 
-	public function setPatter($patter): void
-	{
+        if (false === $match) {
+            throw new \InvalidArgumentException('Pattern '.$patter.' is not a valid regex');
+        }
 
-		// Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
-
-		$match = @preg_match(self::BELL . $patter . self::BELL . 'u', "dummy_data");
-
-		if ($match === false) {
-			throw new \InvalidArgumentException('Pattern '.$patter.' is not a valid regex');
-		}
-
-		$this->patter = $patter;
-
-	}
-
+        $this->patter = $patter;
+    }
 }

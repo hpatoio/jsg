@@ -6,11 +6,8 @@ namespace Musement\JsonSchema\Types;
 
 class TypeDateTime extends FormattedString
 {
-
-	public function __construct(string $description)
+    public function __construct(string $name, string $description)
     {
-		$this->type = 'string';
-		parent::__construct($description, 'date-time');
+        parent::__construct($name, $description, 'date-time');
     }
-
 }

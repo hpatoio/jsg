@@ -6,19 +6,16 @@ namespace Musement\JsonSchema\Types;
 
 abstract class FormattedString extends JsonSchemaType
 {
+    protected $format;
 
-	protected $format;
+    public function __construct(string $name, string $description, string $format)
+    {
+        parent::__construct($name, $description, 'string');
+        $this->format = $format;
+    }
 
-	public function __construct(string $description, string $format)
-	{
-		$this->description = $description;
-		$this->type = 'string';
-		$this->format = $format;
-	}
-
-	public function getFormat(): string
-	{
-		return $this->format;
-	}
-
+    public function getFormat(): string
+    {
+        return $this->format;
+    }
 }

@@ -9,31 +9,30 @@ class TypeInteger extends JsonSchemaType
     protected $minimum;
     protected $maximum;
 
-    public function __construct(string $description)
+    public function __construct(string $name, string $description)
     {
-        $this->description = $description;
-        $this->type = 'integer';
+        parent::__construct($name, $description, 'integer');
     }
 
-    public static function from(int $from, string $description)
+    public static function from(int $from, string $name, string $description)
     {
-        $typeNumber = new self($description);
+        $typeNumber = new self($name, $description);
         $typeNumber->setMinimum($from);
 
         return $typeNumber;
     }
 
-    public static function to(int $to, string $description)
+    public static function to(int $to, string $name, string $description)
     {
-        $typeNumber = new self($description);
+        $typeNumber = new self($name, $description);
         $typeNumber->setMaximum($to);
 
         return $typeNumber;
     }
 
-    public static function fromTo(int $from, int $to, string $description)
+    public static function fromTo(int $from, int $to, string $name, string $description)
     {
-        $typeNumber = new self($description);
+        $typeNumber = new self($name, $description);
         $typeNumber->setMinimum($from);
         $typeNumber->setMaximum($to);
 

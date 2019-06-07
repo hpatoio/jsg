@@ -17,14 +17,14 @@ final class FormattedStringTest extends \PHPUnit\Framework\TestCase
 
 	public function testTypeDateIsCreatedWithTypeStringAndDateFormat()
 	{
-		$mySchema = new TypeDate("My date");
+		$mySchema = new TypeDate("foo", "My date");
 		$this->assertSame("string", $mySchema->getType());
 		$this->assertSame("date", $mySchema->getFormat());
 	}
 
 	public function testTypeDateTimeIsCreatedWithTypeStringAndDateTimeFormat()
 	{
-		$mySchema = new TypeDateTime("My date time");
+		$mySchema = new TypeDateTime("foo", "My date time");
 		$this->assertSame("string", $mySchema->getType());
 		$this->assertSame("date-time", $mySchema->getFormat());
 	}
@@ -32,7 +32,7 @@ final class FormattedStringTest extends \PHPUnit\Framework\TestCase
 
 	public function testTypeEmailIsCreatedWithTypeStringAndEmailFormat()
 	{
-		$mySchema = new TypeEmail("My email");
+		$mySchema = new TypeEmail("foo", "My email");
 		$this->assertSame("string", $mySchema->getType());
 		$this->assertSame("email", $mySchema->getFormat());
 	}
@@ -40,7 +40,7 @@ final class FormattedStringTest extends \PHPUnit\Framework\TestCase
 
 	public function testTypeTimeIsCreatedWithTypeStringAndTimeFormat()
 	{
-		$mySchema = new TypeTime("My time");
+		$mySchema = new TypeTime("foo", "My time");
 		$this->assertSame("string", $mySchema->getType());
 		$this->assertSame("time", $mySchema->getFormat());
 	}
