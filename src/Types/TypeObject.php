@@ -12,6 +12,8 @@ final class TypeObject extends JsonSchemaType
 
     private $properties;
 
+    private $required;
+
     public function __construct(string $name, string $schema, string $id, string $title)
     {
         $this->schema = $schema;
@@ -20,10 +22,29 @@ final class TypeObject extends JsonSchemaType
         $this->type = 'object';
 
         $this->properties = array();
+        $this->required = array();
     }
 
     public function getProperties(): array
     {
         return $this->properties;
+    }
+
+    public function getRequired(): array
+    {
+        return $this->required;
+    }
+
+    public function addProperty(JsonSchemaType $property, bool $required = false)
+    {
+        if (isset($this->properties[$property->getName()])) {
+            throw new \InvalidArgumentException('Property '.$property->getName().' already present.');
+        }
+
+        $this->properties[$property->getName()] = $property;
+
+        if ($required) {
+            $this->required[] = $property->getName();
+        }
     }
 }
