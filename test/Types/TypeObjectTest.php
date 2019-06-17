@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test;
+namespace Musement\JsonSchema\Test\Types;
 
 use Musement\JsonSchema\Types\TypeBoolean;
 use Musement\JsonSchema\Types\TypeInteger;

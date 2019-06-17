@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test;
+namespace Musement\JsonSchema\Test\Types;
 
 use Musement\JsonSchema\Types\Libs\Range;
-use Musement\JsonSchema\Types\TypeInteger;
 use Musement\JsonSchema\Types\TypeString;
 
 final class TypeStringTest extends \PHPUnit\Framework\TestCase

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test;
+namespace Musement\JsonSchema\Test\Types;
 
-use Musement\JsonSchema\Types\Libs\Range;
 use Musement\JsonSchema\Types\TypeInteger;
 
 final class TypeIntegerTest extends \PHPUnit\Framework\TestCase
