@@ -6,20 +6,13 @@ namespace Musement\JsonSchema\Types;
 
 final class TypeObject extends JsonSchemaType
 {
-    private $schema;
-    private $id;
-    private $title;
-
     private $properties;
 
     private $required;
 
-    public function __construct(string $name, string $schema, string $id, string $title)
+    public function __construct(string $name, string $description)
     {
-        $this->schema = $schema;
-        $this->id = $id;
-        $this->title = $title;
-        $this->type = 'object';
+        parent::__construct($name, $description, 'object');
 
         $this->properties = array();
         $this->required = array();
@@ -34,6 +27,16 @@ final class TypeObject extends JsonSchemaType
     {
         return $this->required;
     }
+
+	public function getSchema(): string
+	{
+		return $this->schema;
+	}
+
+	public function getId(): string
+	{
+		return $this->id;
+	}
 
     public function addProperty(JsonSchemaType $property, bool $required = false)
     {

@@ -17,12 +17,12 @@ abstract class JsonSchemaType
         $this->type = $type;
     }
 
-    public function getName(): string
+    public function getName():? string
     {
         return $this->name;
     }
 
-    public function getDescription(): string
+    public function getDescription():? string
     {
         return $this->description;
     }
