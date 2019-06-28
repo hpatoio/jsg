@@ -28,15 +28,15 @@ final class TypeObject extends JsonSchemaType
         return $this->required;
     }
 
-	public function getSchema(): string
-	{
-		return $this->schema;
-	}
+    public function getSchema(): string
+    {
+        return $this->schema;
+    }
 
-	public function getId(): string
-	{
-		return $this->id;
-	}
+    public function getId(): string
+    {
+        return $this->id;
+    }
 
     public function addProperty(JsonSchemaType $property, bool $required = false)
     {
