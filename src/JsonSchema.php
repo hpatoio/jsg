@@ -12,6 +12,7 @@ class JsonSchema
     private $schema;
     private $id;
     private $title;
+    private $description;
 
     public function __construct(string $id, string $title, string $description, string $schema = 'http://json-schema.org/draft-07/schema#')
     {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test\Types;
+namespace Musement\JsonSchema\Test;
 
 use Musement\JsonSchema\JsonSchema;
 use Musement\JsonSchema\JsonSchemaGenerator;
