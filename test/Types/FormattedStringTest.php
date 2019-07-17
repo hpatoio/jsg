@@ -34,7 +34,6 @@ final class FormattedStringTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame("email", $mySchema->getFormat());
 	}
 
-
 	public function testTypeTimeIsCreatedWithTypeStringAndTimeFormat()
 	{
 		$mySchema = new TypeTime("foo", "My time");

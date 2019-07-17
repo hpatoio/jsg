@@ -2,29 +2,23 @@
 
 namespace Musement\JsonSchema;
 
+use Musement\JsonSchema\Serializer\Normalizer\JsonSchemaNormalizer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class JsonSchemaGenerator
 {
-    private $serializer;
-
-    public function __construct(SerializerInterface $serializer = null)
+    public static function generate(JsonSchema $schemaDefinition, SerializerInterface $serializer = null): string
     {
-        if (null === $serializer) {
-            $serializer = new Serializer(
-                [new ObjectNormalizer()],
-                [new JsonEncoder()]
-            );
-        }
 
-        $this->serializer = $serializer;
-    }
+    	if (null === $serializer) {
+			$serializer = new Serializer(
+				[new JsonSchemaNormalizer()],
+				[new JsonEncoder()]
+			);
+		}
 
-    public function generateSchemaFor(JsonSchema $schemaDefinition): string
-    {
-        return $this->serializer->serialize($schemaDefinition, 'json');
+        return $serializer->serialize($schemaDefinition, 'json');
     }
 }

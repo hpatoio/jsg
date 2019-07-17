@@ -15,9 +15,8 @@ class TypeString extends JsonSchemaType
 
     public function __construct(string $name, string $description)
     {
-        $this->description = $description;
-        $this->type = 'string';
-    }
+		parent::__construct($name, $description, 'string');
+	}
 
     public function getMinLength()
     {

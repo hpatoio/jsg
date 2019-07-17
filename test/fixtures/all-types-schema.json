@@ -1,0 +1,42 @@
+{
+    "schema": "http://json-schema.org/draft-07/schema#",
+    "id": "foo",
+    "title": "My schema",
+    "description": "Test schema description",
+    "properties": {
+        "top": {
+            "name": "top",
+            "description": "Is a top developer ?",
+            "type": "boolean"
+        },
+        "birthdate": {
+            "format": "date",
+            "name": "birthdate",
+            "description": "Birthdate ?",
+            "type": "string"
+        },
+        "interview_at": {
+            "format": "date-time",
+            "name": "interview_at",
+            "description": "Interview planned for ?",
+            "type": "string"
+        },
+        "email": {
+            "format": "email",
+            "name": "email",
+            "description": "Email address ?",
+            "type": "string"
+        },
+        "minimum_salary": {
+            "minimum": 100,
+            "name": "minimum_salary",
+            "description": "Minimum salary ?",
+            "type": "integer"
+        }
+    },
+    "required": [
+        "birthdate",
+        "email",
+        "minimum_salary"
+    ]
+}
