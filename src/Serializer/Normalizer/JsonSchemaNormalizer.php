@@ -13,17 +13,24 @@ class JsonSchemaNormalizer extends GetSetMethodNormalizer
 	 */
 	public function normalize($object, $format = null, array $context = [])
 	{
+
 		$data = parent::normalize($object, $format, $context);
-		return array_filter($data, function ($value) {
 
-			if (is_array($value)) {
-				return  (0 !== count($value));
-			}
+		if (is_array($data)) {
 
-			if (null !== $value) {
-				return  (null !== $value);
-			}
+			return array_filter($data, function ($value) {
 
-		});
+				if (is_array($value)) {
+					return  (0 !== count($value));
+				}
+
+				return (null !== $value);
+
+			});
+
+		}
+
+		throw new \RuntimeException("JsonSchemaNormalizer can only serialize arrays.");
+
 	}
 }
