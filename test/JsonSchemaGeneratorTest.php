@@ -48,5 +48,4 @@ final class JsonSchemaGeneratorTest extends \PHPUnit\Framework\TestCase
 		$this->assertJsonStringEqualsJsonFile( __DIR__. "/fixtures/no-required-schema.json", $generatedSchema);
 	}
 
-
 }

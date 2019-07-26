@@ -10,7 +10,8 @@ class JsonSchemaGenerator
 {
     public static function generate(JsonSchema $schemaDefinition): string
     {
-		$serializer = new Serializer([new JsonSchemaNormalizer()],[new JsonEncoder()]);
+        $serializer = new Serializer([new JsonSchemaNormalizer()], [new JsonEncoder()]);
+
         return $serializer->serialize($schemaDefinition, 'json');
     }
 }

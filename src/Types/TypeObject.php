@@ -8,15 +8,13 @@ use Musement\JsonSchema\Traits\PropertiesAwareTrait;
 
 final class TypeObject extends JsonSchemaType
 {
+    use PropertiesAwareTrait;
 
-	use PropertiesAwareTrait;
+    public function __construct(string $name, string $description)
+    {
+        parent::__construct($name, $description, 'object');
 
-	public function __construct(string $name, string $description)
-	{
-		parent::__construct($name, $description, 'object');
-
-		$this->properties = array();
-		$this->required = array();
-	}
-
+        $this->properties = array();
+        $this->required = array();
+    }
 }

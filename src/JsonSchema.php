@@ -6,8 +6,7 @@ use Musement\JsonSchema\Traits\PropertiesAwareTrait;
 
 class JsonSchema
 {
-
-	use PropertiesAwareTrait;
+    use PropertiesAwareTrait;
 
     private $schema;
     private $id;
@@ -41,5 +40,4 @@ class JsonSchema
     {
         return $this->description;
     }
-
 }
