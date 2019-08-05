@@ -4,10 +4,23 @@ declare(strict_types=1);
 
 namespace Musement\JsonSchema\Types;
 
+use JMS\Serializer\Annotation as JMS;
+
 class TypeString extends JsonSchemaType
 {
+    /**
+     * @JMS\Type("integer")
+     */
     private $minLength;
+
+    /**
+     * @JMS\Type("integer")
+     */
     private $maxLength;
+
+    /**
+     * @JMS\Type("string")
+     */
     private $patter;
 
     // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php

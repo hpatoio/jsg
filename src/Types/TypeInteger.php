@@ -4,9 +4,18 @@ declare(strict_types=1);
 
 namespace Musement\JsonSchema\Types;
 
+use JMS\Serializer\Annotation as JMS;
+
 class TypeInteger extends JsonSchemaType
 {
+    /**
+     * @JMS\Type("integer")
+     */
     protected $minimum;
+
+    /**
+     * @JMS\Type("integer")
+     */
     protected $maximum;
 
     public function __construct(string $name, string $description)

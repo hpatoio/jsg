@@ -8,7 +8,8 @@
       "format": "email",
       "name": "email",
       "description": "Email address ?",
-      "type": "string"
+      "type": "string",
+      "_jst": "email"
     }
   }
 }

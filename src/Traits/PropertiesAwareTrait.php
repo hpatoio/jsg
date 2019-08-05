@@ -3,10 +3,20 @@
 namespace Musement\JsonSchema\Traits;
 
 use Musement\JsonSchema\Types\JsonSchemaType;
+use JMS\Serializer\Annotation as JMS;
 
 trait PropertiesAwareTrait
 {
+    /**
+     * @JMS\SkipWhenEmpty()
+     * @JMS\Type("array<string, Musement\JsonSchema\Types\JsonSchemaType>")
+     */
     protected $properties = [];
+
+    /**
+     * @JMS\SkipWhenEmpty()
+     * @JMS\Type("array")
+     */
     protected $required = [];
 
     public function getProperties(): array

@@ -5,29 +5,34 @@
     "description": "Test schema description",
     "properties": {
         "top": {
+            "_jst" : "boolean",
             "name": "top",
             "description": "Is a top developer ?",
             "type": "boolean"
         },
         "birthdate": {
+            "_jst" : "date",
             "format": "date",
             "name": "birthdate",
             "description": "Birthdate ?",
             "type": "string"
         },
         "interview_at": {
+            "_jst" : "date-time",
             "format": "date-time",
             "name": "interview_at",
             "description": "Interview planned for ?",
             "type": "string"
         },
         "email": {
+            "_jst" : "email",
             "format": "email",
             "name": "email",
             "description": "Email address ?",
             "type": "string"
         },
         "minimum_salary": {
+            "_jst": "integer",
             "minimum": 100,
             "name": "minimum_salary",
             "description": "Minimum salary ?",

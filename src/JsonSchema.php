@@ -3,14 +3,33 @@
 namespace Musement\JsonSchema;
 
 use Musement\JsonSchema\Traits\PropertiesAwareTrait;
+use JMS\Serializer\Annotation as JMS;
 
+/**
+ * @JMS\AccessorOrder("custom", custom = {"schema", "id", "title", "description", "title", "properties", "required"})
+ */
 class JsonSchema
 {
     use PropertiesAwareTrait;
 
+    /**
+     * @JMS\Type("string")
+     */
     private $schema;
+
+    /**
+     * @JMS\Type("string")
+     */
     private $id;
+
+    /**
+     * @JMS\Type("string")
+     */
     private $title;
+
+    /**
+     * @JMS\Type("string")
+     */
     private $description;
 
     public function __construct(string $id, string $title, string $description, string $schema = 'http://json-schema.org/draft-07/schema#')

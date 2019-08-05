@@ -5,14 +5,14 @@ namespace Musement\JsonSchema;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerBuilder;
 
-class JsonSchemaGenerator
+class JsonSchemaHydrator
 {
-    public static function generate(JsonSchema $schemaDefinition): string
+    public static function hydrate(string $schema): JsonSchema
     {
         AnnotationRegistry::registerLoader('class_exists');
 
         $serializer = SerializerBuilder::create()->build();
 
-        return $serializer->serialize($schemaDefinition, 'json');
+        return $serializer->deserialize($schema, JsonSchema::class, 'json');
     }
 }
