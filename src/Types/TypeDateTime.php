@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Types;
+namespace Hpatoio\JsonSchema\Types;
 
 class TypeDateTime extends FormattedString
 {

@@ -1,16 +1,17 @@
 {
-  "name": "musement/my-project",
+  "name": "hpatoio/jsg",
   "type": "library",
-  "description": "Description",
+  "description": "Generate an object from a json schema definition and vice versa",
+
   "keywords": [
-    "musement"
+    "json-schema", "json"
   ],
-  "homepage": "https://github.com/musement/my-project",
+  "homepage": "https://github.com/hpatoio/jsg",
   "license": "MIT",
   "authors": [
     {
-      "name": "Foo",
-      "email": "foo@musement.com"
+      "name": "Simone Fumagalli",
+      "email": "simone@iliveinperego.com"
     }
   ],
   "require": {
@@ -27,16 +28,16 @@
   },
   "autoload": {
     "psr-4": {
-      "Musement\\JsonSchema\\": "src/"
+      "Hpatoio\\JsonSchema\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Musement\\JsonSchema\\Test\\": "test/"
+      "Hpatoio\\JsonSchema\\Test\\": "test/"
     }
   },
   "support": {
-    "issues": "https://github.com/musement/my-project/issues",
-    "source": "https://github.com/musement/my-project"
+    "issues": "https://github.com/hpatoio/jsg/issues",
+    "source": "https://github.com/hpatoio/jsg"
   }
 }

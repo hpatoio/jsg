@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test\Types;
+namespace Hpatoio\JsonSchema\Test\Types;
 
-use Musement\JsonSchema\Types\TypeDate;
-use Musement\JsonSchema\Types\TypeDateTime;
-use Musement\JsonSchema\Types\TypeEmail;
-use Musement\JsonSchema\Types\TypeTime;
+use Hpatoio\JsonSchema\Types\TypeDate;
+use Hpatoio\JsonSchema\Types\TypeDateTime;
+use Hpatoio\JsonSchema\Types\TypeEmail;
+use Hpatoio\JsonSchema\Types\TypeTime;
 
 final class FormattedStringTest extends \PHPUnit\Framework\TestCase
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Musement\JsonSchema;
+namespace Hpatoio\JsonSchema;
 
-use Musement\JsonSchema\Traits\PropertiesAwareTrait;
+use Hpatoio\JsonSchema\Traits\PropertiesAwareTrait;
 use JMS\Serializer\Annotation as JMS;
 
 /**

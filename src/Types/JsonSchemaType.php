@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Types;
+namespace Hpatoio\JsonSchema\Types;
 
 use JMS\Serializer\Annotation as JMS;
 
@@ -10,13 +10,13 @@ use JMS\Serializer\Annotation as JMS;
  * @JMS\Discriminator(
  *      field = "_jst",
  *      map = {
- *          "boolean":  "Musement\JsonSchema\Types\TypeBoolean",
- *          "date":  "Musement\JsonSchema\Types\TypeDate",
- *          "date-time":  "Musement\JsonSchema\Types\TypeDateTime",
- *          "email":  "Musement\JsonSchema\Types\TypeEmail",
- *          "integer":  "Musement\JsonSchema\Types\TypeInteger",
- *          "string":  "Musement\JsonSchema\Types\TypeString",
- *          "time":  "Musement\JsonSchema\Types\TypeTime"
+ *          "boolean":  "Hpatoio\JsonSchema\Types\TypeBoolean",
+ *          "date":  "Hpatoio\JsonSchema\Types\TypeDate",
+ *          "date-time":  "Hpatoio\JsonSchema\Types\TypeDateTime",
+ *          "email":  "Hpatoio\JsonSchema\Types\TypeEmail",
+ *          "integer":  "Hpatoio\JsonSchema\Types\TypeInteger",
+ *          "string":  "Hpatoio\JsonSchema\Types\TypeString",
+ *          "time":  "Hpatoio\JsonSchema\Types\TypeTime"
  *      }
  * )
  */

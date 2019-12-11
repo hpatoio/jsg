@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Types;
+namespace Hpatoio\JsonSchema\Types;
 
-use Musement\JsonSchema\Traits\PropertiesAwareTrait;
+use Hpatoio\JsonSchema\Traits\PropertiesAwareTrait;
 
 final class TypeObject extends JsonSchemaType
 {

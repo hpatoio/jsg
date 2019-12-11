@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test\Types;
+namespace Hpatoio\JsonSchema\Test\Types;
 
-use Musement\JsonSchema\Types\TypeBoolean;
-use Musement\JsonSchema\Types\TypeInteger;
-use Musement\JsonSchema\Types\TypeObject;
+use Hpatoio\JsonSchema\Types\TypeBoolean;
+use Hpatoio\JsonSchema\Types\TypeInteger;
+use Hpatoio\JsonSchema\Types\TypeObject;
 
 final class TypeObjectTest extends \PHPUnit\Framework\TestCase
 {

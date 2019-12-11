@@ -4,7 +4,7 @@ parameters:
 
 services    :
     -
-        class: Musement\PHPStan\Rules\CheckExceptionInNamespace
+        class: Hpatoio\PHPStan\Rules\CheckExceptionInNamespace
         arguments:
             sourceNamespace: %sourceNamespace%
             allowedExceptionNamespace: %allowedExceptionNamespace%

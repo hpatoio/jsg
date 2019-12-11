@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test;
+namespace Hpatoio\JsonSchema\Test;
 
-use Musement\JsonSchema\JsonSchema;
-use Musement\JsonSchema\JsonSchemaGenerator;
-use Musement\JsonSchema\JsonSchemaHydrator;
-use Musement\JsonSchema\Types\TypeBoolean;
-use Musement\JsonSchema\Types\TypeDate;
-use Musement\JsonSchema\Types\TypeDateTime;
-use Musement\JsonSchema\Types\TypeEmail;
-use Musement\JsonSchema\Types\TypeInteger;
+use Hpatoio\JsonSchema\JsonSchema;
+use Hpatoio\JsonSchema\JsonSchemaGenerator;
+use Hpatoio\JsonSchema\JsonSchemaHydrator;
+use Hpatoio\JsonSchema\Types\TypeBoolean;
+use Hpatoio\JsonSchema\Types\TypeDate;
+use Hpatoio\JsonSchema\Types\TypeDateTime;
+use Hpatoio\JsonSchema\Types\TypeEmail;
+use Hpatoio\JsonSchema\Types\TypeInteger;
 
 /**
  * @group integration

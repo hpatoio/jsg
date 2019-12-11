@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Types;
+namespace Hpatoio\JsonSchema\Types;
 
 use JMS\Serializer\Annotation as JMS;
 

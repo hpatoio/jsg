@@ -21,25 +21,25 @@ cd jsg
 2) Build the image
 
 ```
-docker build -t musement-my-project .docker
+docker build -t jsg .docker
 ```
 
 3) Run `composer install` to get dependencies
 
 ```
-docker run --rm -v `pwd`:/var/musement-my-project musement-my-project composer install
+docker run --rm -v `pwd`:/var/jsg jsg composer install
 ```
 
 ## Run tests 
 
 ```
-docker run --rm -v `pwd`:/var/musement-my-project musement-my-project vendor/bin/phpunit
+docker run --rm -v `pwd`:/var/jsg jsg vendor/bin/phpunit
 ```
 
 ## Fix CS
 
 ```
-docker run --rm -v `pwd`:/var/musement-my-project musement-my-project vendor/bin/ecs check src --no-progress-bar -vvv --fix
+docker run --rm -v `pwd`:/var/jsg jsg vendor/bin/ecs check src --no-progress-bar -vvv --fix
 ```
 
 ## License

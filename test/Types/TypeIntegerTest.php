@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test\Types;
+namespace Hpatoio\JsonSchema\Test\Types;
 
-use Musement\JsonSchema\Types\TypeInteger;
+use Hpatoio\JsonSchema\Types\TypeInteger;
 
 final class TypeIntegerTest extends \PHPUnit\Framework\TestCase
 {

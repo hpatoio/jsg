@@ -1,6 +1,6 @@
 <?php
 
-namespace Musement\JsonSchema;
+namespace Hpatoio\JsonSchema;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use JMS\Serializer\SerializerBuilder;

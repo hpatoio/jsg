@@ -1,15 +1,15 @@
 <?php
 
-namespace Musement\JsonSchema\Traits;
+namespace Hpatoio\JsonSchema\Traits;
 
-use Musement\JsonSchema\Types\JsonSchemaType;
+use Hpatoio\JsonSchema\Types\JsonSchemaType;
 use JMS\Serializer\Annotation as JMS;
 
 trait PropertiesAwareTrait
 {
     /**
      * @JMS\SkipWhenEmpty()
-     * @JMS\Type("array<string, Musement\JsonSchema\Types\JsonSchemaType>")
+     * @JMS\Type("array<string, Hpatoio\JsonSchema\Types\JsonSchemaType>")
      */
     protected $properties = [];
 

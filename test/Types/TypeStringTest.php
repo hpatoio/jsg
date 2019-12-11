@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Musement\JsonSchema\Test\Types;
+namespace Hpatoio\JsonSchema\Test\Types;
 
-use Musement\JsonSchema\Types\Libs\Range;
-use Musement\JsonSchema\Types\TypeString;
+use Hpatoio\JsonSchema\Types\Libs\Range;
+use Hpatoio\JsonSchema\Types\TypeString;
 
 final class TypeStringTest extends \PHPUnit\Framework\TestCase
 {
