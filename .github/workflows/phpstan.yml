@@ -1,0 +1,27 @@
+name: PHPStan
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions:
+          - 7.3
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: PHPStan
+        uses: docker://oskarstark/phpstan-ga
+        with:
+          args: analyse src/
