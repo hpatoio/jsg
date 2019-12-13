@@ -1,0 +1,39 @@
+name: PHPUnit tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions:
+          - 7.3
+          - 7.4
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Setup PHP, with composer
+      uses: shivammathur/setup-php@v1 #https://github.com/shivammathur/setup-php
+      with:
+        coverage: none
+        extensions: "mbstring"
+        php-version: ${{ matrix.php-versions }}
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Run unit tests with phpunit/phpunit
+      run: vendor/bin/phpunit
