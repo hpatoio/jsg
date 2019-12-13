@@ -1,6 +1,6 @@
 # JSON Schema generator
 
-[![Continuous Integration](https://github.com/hpatoio/jsg/workflows/Tests/badge.svg)](https://github.com/hpatoio/jsg/actions)
+[![Continuous Integration](https://github.com/hpatoio/jsg/workflows/PHPUnit%20tests/badge.svg)](https://github.com/hpatoio/jsg/actions)
 
 ## Installation
 
