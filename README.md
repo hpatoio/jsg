@@ -1,5 +1,6 @@
-This is a scaffold to start a new PHP project
+# JSON Schema generator
 
+[![Continuous Integration](https://github.com/hpatoio/jsg/workflows/Tests/badge.svg)](https://github.com/hpatoio/jsg/actions)
 
 ## Installation
 
