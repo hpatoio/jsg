@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebd8e3049edca222ca0a3ff8ab268f88",
+    "content-hash": "8f161f573dce515ec5de22354898ec12",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -5473,6 +5473,7 @@
                 "MIT"
             ],
             "description": "Slim wrapper around phpstan/phpdoc-parser with format preserving printer",
+            "abandoned": "rector/rector",
             "time": "2019-03-05T23:15:04+00:00"
         },
         {
