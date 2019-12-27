@@ -13,21 +13,25 @@ class JsonSchema
     use PropertiesAwareTrait;
 
     /**
+     * @var string
      * @JMS\Type("string")
      */
     private $schema;
 
     /**
+     * @var string
      * @JMS\Type("string")
      */
     private $id;
 
     /**
+     * @var string
      * @JMS\Type("string")
      */
     private $title;
 
     /**
+     * @var string
      * @JMS\Type("string")
      */
     private $description;
