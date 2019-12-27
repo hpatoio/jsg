@@ -16,12 +16,6 @@ class JsonSchema
      * @var string
      * @JMS\Type("string")
      */
-    private $schema;
-
-    /**
-     * @var string
-     * @JMS\Type("string")
-     */
     private $id;
 
     /**
@@ -36,12 +30,18 @@ class JsonSchema
      */
     private $description;
 
+    /**
+     * @var string
+     * @JMS\Type("string")
+     */
+    private $schema;
+
     public function __construct(string $id, string $title, string $description, string $schema = 'http://json-schema.org/draft-07/schema#')
     {
         $this->id = $id;
         $this->title = $title;
-        $this->schema = $schema;
         $this->description = $description;
+        $this->schema = $schema;
     }
 
     public function getSchema(): string
