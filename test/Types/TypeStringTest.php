@@ -16,17 +16,19 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame("string", $mySchema->getType());
 	}
 
-	public function testTypeStringThrowExceptionIfMinLengthIsHigherThanMaxLength()
+	public function testTypeStringThrowExceptionIfMinLengthIsSetHigherThanMaxLength()
 	{
 		$this->expectException(\InvalidArgumentException::class);
+
 		$myString = new TypeString("foo","My string");
 		$myString->setMaxLength(10);
 		$myString->setMinLength(11);
 	}
 
-	public function testTypeStringThrowExceptionIfMaxLengthIsLowerThanMinLength()
+	public function testTypeStringThrowExceptionIfMaxLengthIsSetLowerThanMinLength()
 	{
 		$this->expectException(\InvalidArgumentException::class);
+
 		$myString = new TypeString("foo","My string");
 		$myString->setMinLength(11);
 		$myString->setMaxLength(10);
@@ -38,25 +40,24 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 		$myString->setMinLength(10);
 		$myString->setMaxLength(10);
 
-		$this->assertSame(10, $myString->getMaxLength());
-		$this->assertSame(10, $myString->getMinLength());
+		$this->assertInstanceOf(TypeString::class, $myString);
 	}
 
-	public function testSetInvalidPatterThrowException()
+	public function testTypeStringThrowExceptionIfPatternIsInvalid()
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		$myString = new TypeString("foo","My string");
-		$myString->setPatter("^(0-9]{3}))?[0-9]{3}-[0-9]{4}$");
+		$myString->setPattern("^(0-9]{3}))?[0-9]{3}-[0-9]{4}$");
 	}
 
-	public function testSetNegativeMinLenghtThrowException()
+	public function testTypeStringThrowExceptionIfMinLenghtIsSetNegative()
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		$myString = new TypeString("foo","My string");
 		$myString->setMinLength(-1);
 	}
 
-	public function testSetMaxLenghtLowerThanOneThrowException()
+	public function testTypeStringThrowExceptionIfMaxLenghtIsSetToZero()
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		$myString = new TypeString("foo","My string");

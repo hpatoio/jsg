@@ -9,19 +9,22 @@ use JMS\Serializer\Annotation as JMS;
 class TypeString extends JsonSchemaType
 {
     /**
+     * @var int
      * @JMS\Type("integer")
      */
     private $minLength;
 
     /**
+     * @var int
      * @JMS\Type("integer")
      */
     private $maxLength;
 
     /**
+     * @var string
      * @JMS\Type("string")
      */
-    private $patter;
+    private $pattern;
 
     // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
     const BELL = "\x07";
@@ -29,11 +32,6 @@ class TypeString extends JsonSchemaType
     public function __construct(string $name, string $description)
     {
         parent::__construct($name, $description, 'string');
-    }
-
-    public function getMinLength()
-    {
-        return $this->minLength;
     }
 
     public function setMinLength(int $minLength): void
@@ -49,11 +47,6 @@ class TypeString extends JsonSchemaType
         $this->minLength = $minLength;
     }
 
-    public function getMaxLength()
-    {
-        return $this->maxLength;
-    }
-
     public function setMaxLength(int $maxLength): void
     {
         if ($maxLength < 1) {
@@ -67,21 +60,16 @@ class TypeString extends JsonSchemaType
         $this->maxLength = $maxLength;
     }
 
-    public function getPatter()
-    {
-        return $this->patter;
-    }
-
-    public function setPatter($patter): void
+    public function setPattern(string $pattern): void
     {
         // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
 
-        $match = @preg_match(self::BELL.$patter.self::BELL.'u', 'dummy_data');
+        $match = @preg_match(self::BELL.$pattern.self::BELL.'u', 'dummy_data');
 
         if (false === $match) {
-            throw new \InvalidArgumentException('Pattern '.$patter.' is not a valid regex');
+            throw new \InvalidArgumentException('Pattern '.$pattern.' is not a valid regex');
         }
 
-        $this->patter = $patter;
+        $this->pattern = $pattern;
     }
 }
