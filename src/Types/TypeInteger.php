@@ -9,11 +9,13 @@ use JMS\Serializer\Annotation as JMS;
 class TypeInteger extends JsonSchemaType
 {
     /**
+     * @var int
      * @JMS\Type("integer")
      */
     protected $minimum;
 
     /**
+     * @var int
      * @JMS\Type("integer")
      */
     protected $maximum;
@@ -23,7 +25,7 @@ class TypeInteger extends JsonSchemaType
         parent::__construct($name, $description, 'integer');
     }
 
-    public static function from(int $from, string $name, string $description)
+    public static function from(int $from, string $name, string $description): self
     {
         $typeNumber = new self($name, $description);
         $typeNumber->setMinimum($from);
@@ -31,7 +33,7 @@ class TypeInteger extends JsonSchemaType
         return $typeNumber;
     }
 
-    public static function to(int $to, string $name, string $description)
+    public static function to(int $to, string $name, string $description): self
     {
         $typeNumber = new self($name, $description);
         $typeNumber->setMaximum($to);
@@ -39,7 +41,7 @@ class TypeInteger extends JsonSchemaType
         return $typeNumber;
     }
 
-    public static function fromTo(int $from, int $to, string $name, string $description)
+    public static function fromTo(int $from, int $to, string $name, string $description): self
     {
         $typeNumber = new self($name, $description);
         $typeNumber->setMinimum($from);
@@ -48,7 +50,7 @@ class TypeInteger extends JsonSchemaType
         return $typeNumber;
     }
 
-    private function setMinimum(int $minimum)
+    private function setMinimum(int $minimum): void
     {
         if (null !== $this->maximum && $minimum > $this->maximum) {
             throw new \InvalidArgumentException('Minimum higher that maximum');
@@ -57,7 +59,7 @@ class TypeInteger extends JsonSchemaType
         $this->minimum = $minimum;
     }
 
-    private function setMaximum(int $maximum)
+    private function setMaximum(int $maximum): void
     {
         if (null !== $this->minimum && $maximum < $this->minimum) {
             throw new \InvalidArgumentException('Minimum higher that maximum');
