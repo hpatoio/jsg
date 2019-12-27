@@ -36,7 +36,7 @@ class JsonSchema
      */
     private $schema;
 
-    public function __construct(string $id, string $title, string $description, string $schema = 'http://json-schema.org/draft-07/schema#')
+    public function __construct(string $id, string $title, string $description, string $schema)
     {
         $this->id = $id;
         $this->title = $title;
