@@ -5,11 +5,11 @@
   "description": "Test schema description",
   "properties": {
     "email": {
+      "_jst": "email",
       "format": "email",
       "name": "email",
       "description": "Email address ?",
-      "type": "string",
-      "_jst": "email"
+      "type": "string"
     }
   }
 }

@@ -16,9 +16,11 @@ use JMS\Serializer\Annotation as JMS;
  *          "email":  "Hpatoio\JsonSchema\Types\TypeEmail",
  *          "integer":  "Hpatoio\JsonSchema\Types\TypeInteger",
  *          "string":  "Hpatoio\JsonSchema\Types\TypeString",
- *          "time":  "Hpatoio\JsonSchema\Types\TypeTime"
+ *          "time":  "Hpatoio\JsonSchema\Types\TypeTime",
+ *          "object":  "Hpatoio\JsonSchema\Types\TypeObject"
  *      }
  * )
+ * @JMS\AccessorOrder("custom", custom = {"_jst", "format", "name", "description", "type", "minimum", "maximum", "properties", "required"})
  */
 abstract class JsonSchemaType
 {
@@ -55,7 +57,7 @@ abstract class JsonSchemaType
         $this->_jst = $type;
     }
 
-    public function getName(): ? string
+    public function getName(): string
     {
         return $this->name;
     }
