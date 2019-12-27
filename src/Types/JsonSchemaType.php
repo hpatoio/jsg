@@ -23,22 +23,26 @@ use JMS\Serializer\Annotation as JMS;
 abstract class JsonSchemaType
 {
     /**
+	 * @var string
      * @JMS\Type("string")
      */
     protected $name;
 
     /**
-     * @JMS\Type("string")
+	 * @var string
+	 * @JMS\Type("string")
      */
     protected $description;
 
     /**
-     * @JMS\Type("string")
+	 * @var string
+	 * @JMS\Type("string")
      */
     protected $type;
 
     /**
-     * @JMS\Exclude()
+	 * @var string
+	 * @JMS\Exclude()
      * @JMS\Type("string")
      */
     protected $_jst;
