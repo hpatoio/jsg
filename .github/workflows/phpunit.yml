@@ -25,7 +25,7 @@ jobs:
     - name: Setup PHP, with composer
       uses: shivammathur/setup-php@v1 #https://github.com/shivammathur/setup-php
       with:
-        coverage: none
+        coverage: pcov
         extensions: "mbstring"
         php-version: ${{ matrix.php-versions }}
 
@@ -35,5 +35,11 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Run unit tests with phpunit/phpunit
+    - name: Run PHPunit
       run: vendor/bin/phpunit
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml

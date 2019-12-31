@@ -2,6 +2,9 @@
 
 [![Continuous Integration](https://github.com/hpatoio/jsg/workflows/PHPUnit%20tests/badge.svg)](https://github.com/hpatoio/jsg/actions)
 
+[![codecov](https://codecov.io/gh/hpatoio/jsg/branch/master/graph/badge.svg)](https://codecov.io/gh/hpatoio/jsg)
+
+
 ## Installation
 
 Install the package in your project with
