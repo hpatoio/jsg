@@ -9,6 +9,7 @@ use JMS\Serializer\Annotation as JMS;
 abstract class FormattedString extends JsonSchemaType
 {
     /**
+     * @var string
      * @JMS\Type("string")
      */
     protected $format;

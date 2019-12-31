@@ -9,34 +9,74 @@ use JMS\Serializer\Annotation as JMS;
 class TypeString extends JsonSchemaType
 {
     /**
+     * @var int
      * @JMS\Type("integer")
      */
     private $minLength;
 
     /**
+     * @var int
      * @JMS\Type("integer")
      */
     private $maxLength;
 
     /**
+     * @var string
      * @JMS\Type("string")
      */
-    private $patter;
+    private $pattern;
 
     // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
     const BELL = "\x07";
 
-    public function __construct(string $name, string $description)
+    private function __construct(string $name, string $description)
     {
         parent::__construct($name, $description, 'string');
     }
 
-    public function getMinLength()
+    public static function withMinLength(string $name, string $description, int $minLength): self
     {
-        return $this->minLength;
+        $typeString = new self($name, $description);
+        $typeString->setMinLength($minLength);
+
+        return $typeString;
     }
 
-    public function setMinLength(int $minLength): void
+    public static function withMaxLength(string $name, string $description, int $maxLength): self
+    {
+        $typeString = new self($name, $description);
+        $typeString->setMaxLength($maxLength);
+
+        return $typeString;
+    }
+
+    public static function withRangeLength(string $name, string $description, int $minLength, int $maxLength): self
+    {
+        $typeString = new self($name, $description);
+        $typeString->setMinLength($minLength);
+        $typeString->setMaxLength($maxLength);
+
+        return $typeString;
+    }
+
+    public static function withPattern(string $name, string $description, string $pattern): self
+    {
+        $typeString = new self($name, $description);
+
+        // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
+
+        $match = @preg_match(self::BELL.$pattern.self::BELL.'u', 'dummy_data');
+
+        if (false === $match) {
+            throw new \InvalidArgumentException('Pattern '.$pattern.' is not a valid regex');
+        }
+
+        $typeString->pattern = $pattern;
+
+        return $typeString;
+    }
+
+    private function setMinLength(int $minLength): void
     {
         if ($minLength < 0) {
             throw new \InvalidArgumentException('Min length must be higher that zero');
@@ -49,12 +89,7 @@ class TypeString extends JsonSchemaType
         $this->minLength = $minLength;
     }
 
-    public function getMaxLength()
-    {
-        return $this->maxLength;
-    }
-
-    public function setMaxLength(int $maxLength): void
+    private function setMaxLength(int $maxLength): void
     {
         if ($maxLength < 1) {
             throw new \InvalidArgumentException('Max length must be higher that one');
@@ -65,23 +100,5 @@ class TypeString extends JsonSchemaType
         }
 
         $this->maxLength = $maxLength;
-    }
-
-    public function getPatter()
-    {
-        return $this->patter;
-    }
-
-    public function setPatter($patter): void
-    {
-        // Taken from https://github.com/opis/json-schema/blob/19868514d5e4c27553b21c7f0cf6388734c67d18/src/Validator.php
-
-        $match = @preg_match(self::BELL.$patter.self::BELL.'u', 'dummy_data');
-
-        if (false === $match) {
-            throw new \InvalidArgumentException('Pattern '.$patter.' is not a valid regex');
-        }
-
-        $this->patter = $patter;
     }
 }

@@ -26,7 +26,6 @@ final class FormattedStringTest extends \PHPUnit\Framework\TestCase
 		$this->assertSame("date-time", $mySchema->getFormat());
 	}
 
-
 	public function testTypeEmailIsCreatedWithTypeStringAndEmailFormat()
 	{
 		$mySchema = new TypeEmail("foo", "My email");
