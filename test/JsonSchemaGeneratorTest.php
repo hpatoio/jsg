@@ -32,6 +32,8 @@ final class JsonSchemaGeneratorTest extends \PHPUnit\Framework\TestCase
 				new OptionalObjectProperty(new TypeDateTime("interview_at", "Interview planned for ?")),
 				new RequiredObjectProperty(new TypeEmail("email", "Email address ?")),
 				new RequiredObjectProperty(TypeInteger::from(100, "minimum_salary", "Minimum salary ?")),
+
+				new OptionalObjectProperty(TypeInteger::to(200, "max_days_in_office", "Max number of days in office ?")),
 				new OptionalObjectProperty(new TypeObject("address", "Address", ...[
 					new OptionalObjectProperty(TypeString::withMinLength("street", "Street", 0)),
 					new OptionalObjectProperty(TypeString::withMinLength("city", "City", 0))

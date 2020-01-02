@@ -38,7 +38,14 @@
             "type": "integer",
             "minimum": 100
         },
-        "address": {
+        "max_days_in_office": {
+            "_jst": "integer",
+            "name": "max_days_in_office",
+            "description": "Max number of days in office ?",
+            "type": "integer",
+            "maximum": 200
+        },
+    "address": {
             "_jst": "object",
             "name": "address",
             "description": "Address",

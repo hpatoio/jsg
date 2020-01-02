@@ -22,6 +22,12 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 		$this->assertInstanceOf(TypeString::class, $myString);
 	}
 
+	public function testTypeStringCanBeCreateWithPattern()
+	{
+		$myString = TypeString::withPattern("foo","My string", "^[0-9]{3}$");
+		$this->assertInstanceOf(TypeString::class, $myString);
+	}
+
 	public function testTypeStringThrowExceptionIfPatternIsInvalid()
 	{
 		$this->expectException(\InvalidArgumentException::class);
@@ -38,6 +44,12 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		TypeString::withMaxLength("foo","My string", 0);
+	}
+
+	public function testTypeStringCanBeCreateIfMaxLenghtIs1()
+	{
+		$myString = TypeString::withMaxLength("foo","My string", 1);
+		$this->assertInstanceOf(TypeString::class, $myString);
 	}
 
 }

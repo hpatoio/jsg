@@ -2,3 +2,4 @@
 /vendor/
 .idea
 clover.xml
+infection.log

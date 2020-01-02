@@ -18,7 +18,15 @@ final class TypeIntegerTest extends \PHPUnit\Framework\TestCase
 	public function testTypeIntegerIsCreatedWithRightRange()
 	{
 		$myInteger = TypeInteger::fromTo( 10,20, "foo1", "My integer");
-		$this->assertInstanceOf(TypeInteger::class, $myInteger);
+		$this->assertSame(10, $myInteger->getMinimum());
+		$this->assertSame(20, $myInteger->getMaximum());
+	}
+
+	public function testTypeIntegerIsCreatedWithSameRightRange()
+	{
+		$myInteger = TypeInteger::fromTo( 10,10, "foo1", "My integer");
+		$this->assertSame(10, $myInteger->getMinimum());
+		$this->assertSame(10, $myInteger->getMaximum());
 	}
 
 	public function testTypeIntegerThrowExceptionIfRangeIsNotCorrect()
@@ -30,13 +38,14 @@ final class TypeIntegerTest extends \PHPUnit\Framework\TestCase
 	public function testTypeIntegerIsCreatedCorrectlyWithMaximum()
 	{
 		$myInteger = TypeInteger::to( 20, "foo1", "My integer");
-		$this->assertInstanceOf(TypeInteger::class, $myInteger);
+		$this->assertSame(20, $myInteger->getMaximum());
 	}
 
 	public function testTypeIntegerIsCreatedCorrectlyWithMinimum()
 	{
 		$myInteger = TypeInteger::from(10, "foo1", "My integer");
-		$this->assertInstanceOf(TypeInteger::class, $myInteger);
+		$this->assertSame(10, $myInteger->getMinimum());
+
 	}
 
 }

@@ -82,10 +82,6 @@ class TypeString extends JsonSchemaType
             throw new \InvalidArgumentException('Min length must be higher that zero');
         }
 
-        if (null !== $this->maxLength && $minLength > $this->maxLength) {
-            throw new \InvalidArgumentException('Min length higher that max length');
-        }
-
         $this->minLength = $minLength;
     }
 
