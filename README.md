@@ -40,6 +40,12 @@ docker run --rm -v `pwd`:/var/jsg jsg composer install
 docker run --rm -v `pwd`:/var/jsg jsg vendor/bin/phpunit
 ```
 
+## Run mutation tests
+
+```
+docker run --rm -v `pwd`:/var/jsg jsg ./infection.phar run
+```
+
 ## Fix CS
 
 ```

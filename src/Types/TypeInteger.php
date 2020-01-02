@@ -52,10 +52,6 @@ class TypeInteger extends JsonSchemaType
 
     private function setMinimum(int $minimum): void
     {
-        if (null !== $this->maximum && $minimum > $this->maximum) {
-            throw new \InvalidArgumentException('Minimum higher that maximum');
-        }
-
         $this->minimum = $minimum;
     }
 
