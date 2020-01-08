@@ -1,0 +1,9 @@
+# VCS
+.gitattributes export-ignore
+.gitignore export-ignore
+# Dev
+.docker export-ignore
+.github export-ignore
+# Documents
+*.md export-ignore
+LICENSE export-ignore
