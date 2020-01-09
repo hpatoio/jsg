@@ -37,7 +37,12 @@ class TypeString extends JsonSchemaType
     public static function withMinLength(string $name, string $description, int $minLength): self
     {
         $typeString = new self($name, $description);
-        $typeString->setMinLength($minLength);
+
+		if ($minLength < 0) {
+			throw new \InvalidArgumentException('Min length must be higher that zero');
+		}
+
+		$typeString->minLength = $minLength;
 
         return $typeString;
     }
@@ -45,7 +50,12 @@ class TypeString extends JsonSchemaType
     public static function withMaxLength(string $name, string $description, int $maxLength): self
     {
         $typeString = new self($name, $description);
-        $typeString->setMaxLength($maxLength);
+
+		if ($maxLength < 1) {
+			throw new \InvalidArgumentException('Max length must be higher that one');
+		}
+
+		$typeString->maxLength = $maxLength;
 
         return $typeString;
     }
@@ -53,10 +63,23 @@ class TypeString extends JsonSchemaType
     public static function withRangeLength(string $name, string $description, int $minLength, int $maxLength): self
     {
         $typeString = new self($name, $description);
-        $typeString->setMinLength($minLength);
-        $typeString->setMaxLength($maxLength);
 
-        return $typeString;
+		if ($maxLength < 1) {
+			throw new \InvalidArgumentException('Max length must be higher that one');
+		}
+
+		if ($minLength < 0) {
+			throw new \InvalidArgumentException('Min length must be higher that zero');
+		}
+
+		if ($maxLength < $minLength) {
+			throw new \InvalidArgumentException('Max length lower that min length');
+		}
+
+		$typeString->maxLength = $maxLength;
+		$typeString->minLength = $minLength;
+
+		return $typeString;
     }
 
     public static function withPattern(string $name, string $description, string $pattern): self
@@ -76,25 +99,4 @@ class TypeString extends JsonSchemaType
         return $typeString;
     }
 
-    private function setMinLength(int $minLength): void
-    {
-        if ($minLength < 0) {
-            throw new \InvalidArgumentException('Min length must be higher that zero');
-        }
-
-        $this->minLength = $minLength;
-    }
-
-    private function setMaxLength(int $maxLength): void
-    {
-        if ($maxLength < 1) {
-            throw new \InvalidArgumentException('Max length must be higher that one');
-        }
-
-        if (null !== $this->minLength && $maxLength < $this->minLength) {
-            throw new \InvalidArgumentException('Max length lower that min length');
-        }
-
-        $this->maxLength = $maxLength;
-    }
 }

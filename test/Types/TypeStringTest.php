@@ -22,6 +22,24 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 		$this->assertInstanceOf(TypeString::class, $myString);
 	}
 
+	public function testTypeStringThrowExceptionIfMaxLengthIsLowerThanOne()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		TypeString::withRangeLength("foo","My string", 0, 0);
+	}
+
+	public function testTypeStringCanBeCreateIfMinLengthIsZeroAndMaxLengthIs1()
+	{
+		$myString = TypeString::withRangeLength("foo","My string", 0, 1);
+		$this->assertInstanceOf(TypeString::class, $myString);
+	}
+
+	public function testTypeStringThrowExceptionIfMinLengthIsLowerThanZero()
+	{
+		$this->expectException(\InvalidArgumentException::class);
+		TypeString::withRangeLength("foo","My string", -1, 10);
+	}
+
 	public function testTypeStringCanBeCreateWithPattern()
 	{
 		$myString = TypeString::withPattern("foo","My string", "^[0-9]{3}$");
@@ -34,19 +52,19 @@ final class TypeStringTest extends \PHPUnit\Framework\TestCase
 		TypeString::withPattern("foo","My string", "^(0-9]{3}))?[0-9]{3}-[0-9]{4}$");
 	}
 
-	public function testTypeStringThrowExceptionIfMinLenghtIsSetNegative()
+	public function testTypeStringThrowExceptionIfMinLengthIsSetNegative()
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		TypeString::withMinLength("foo","My string", -1);
 	}
 
-	public function testTypeStringThrowExceptionIfMaxLenghtIsSetToZero()
+	public function testTypeStringThrowExceptionIfMaxLengthIsSetToZero()
 	{
 		$this->expectException(\InvalidArgumentException::class);
 		TypeString::withMaxLength("foo","My string", 0);
 	}
 
-	public function testTypeStringCanBeCreateIfMaxLenghtIs1()
+	public function testTypeStringCanBeCreateIfMaxLengthIs1()
 	{
 		$myString = TypeString::withMaxLength("foo","My string", 1);
 		$this->assertInstanceOf(TypeString::class, $myString);

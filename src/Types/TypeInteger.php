@@ -28,7 +28,7 @@ class TypeInteger extends JsonSchemaType
     public static function from(int $from, string $name, string $description): self
     {
         $typeNumber = new self($name, $description);
-        $typeNumber->setMinimum($from);
+		$typeNumber->minimum = $from;
 
         return $typeNumber;
     }
@@ -36,7 +36,7 @@ class TypeInteger extends JsonSchemaType
     public static function to(int $to, string $name, string $description): self
     {
         $typeNumber = new self($name, $description);
-        $typeNumber->setMaximum($to);
+		$typeNumber->maximum = $to;
 
         return $typeNumber;
     }
@@ -44,24 +44,15 @@ class TypeInteger extends JsonSchemaType
     public static function fromTo(int $from, int $to, string $name, string $description): self
     {
         $typeNumber = new self($name, $description);
-        $typeNumber->setMinimum($from);
-        $typeNumber->setMaximum($to);
 
-        return $typeNumber;
-    }
+		if ($from > $to) {
+			throw new \InvalidArgumentException('Minimum higher that maximum');
+		}
 
-    private function setMinimum(int $minimum): void
-    {
-        $this->minimum = $minimum;
-    }
+		$typeNumber->minimum = $from;
+		$typeNumber->maximum = $to;
 
-    private function setMaximum(int $maximum): void
-    {
-        if (null !== $this->minimum && $maximum < $this->minimum) {
-            throw new \InvalidArgumentException('Minimum higher that maximum');
-        }
-
-        $this->maximum = $maximum;
+		return $typeNumber;
     }
 
     public function getMinimum(): ? int
