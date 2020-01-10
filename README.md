@@ -80,11 +80,17 @@ docker run --rm -v `pwd`:/var/jsg jsg vendor/bin/phpunit
 
 ## Run mutation tests
 
+This project uses [PHP Mutation](https://infection.github.io/). 
+
+To run mutation tests use:
+
 ```
 docker run --rm -v `pwd`:/var/jsg jsg ./infection.phar run
 ```
 
-## Fix CS
+## Apply CS
+
+Before push please fix apply coding standards
 
 ```
 docker run --rm -v `pwd`:/var/jsg jsg vendor/bin/ecs check src --no-progress-bar -vvv --fix
