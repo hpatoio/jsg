@@ -38,11 +38,11 @@ class TypeString extends JsonSchemaType
     {
         $typeString = new self($name, $description);
 
-		if ($minLength < 0) {
-			throw new \InvalidArgumentException('Min length must be higher that zero');
-		}
+        if ($minLength < 0) {
+            throw new \InvalidArgumentException('Min length must be higher that zero');
+        }
 
-		$typeString->minLength = $minLength;
+        $typeString->minLength = $minLength;
 
         return $typeString;
     }
@@ -51,11 +51,11 @@ class TypeString extends JsonSchemaType
     {
         $typeString = new self($name, $description);
 
-		if ($maxLength < 1) {
-			throw new \InvalidArgumentException('Max length must be higher that one');
-		}
+        if ($maxLength < 1) {
+            throw new \InvalidArgumentException('Max length must be higher that one');
+        }
 
-		$typeString->maxLength = $maxLength;
+        $typeString->maxLength = $maxLength;
 
         return $typeString;
     }
@@ -64,22 +64,22 @@ class TypeString extends JsonSchemaType
     {
         $typeString = new self($name, $description);
 
-		if ($maxLength < 1) {
-			throw new \InvalidArgumentException('Max length must be higher that one');
-		}
+        if ($maxLength < 1) {
+            throw new \InvalidArgumentException('Max length must be higher that one');
+        }
 
-		if ($minLength < 0) {
-			throw new \InvalidArgumentException('Min length must be higher that zero');
-		}
+        if ($minLength < 0) {
+            throw new \InvalidArgumentException('Min length must be higher that zero');
+        }
 
-		if ($maxLength < $minLength) {
-			throw new \InvalidArgumentException('Max length lower that min length');
-		}
+        if ($maxLength < $minLength) {
+            throw new \InvalidArgumentException('Max length lower that min length');
+        }
 
-		$typeString->maxLength = $maxLength;
-		$typeString->minLength = $minLength;
+        $typeString->maxLength = $maxLength;
+        $typeString->minLength = $minLength;
 
-		return $typeString;
+        return $typeString;
     }
 
     public static function withPattern(string $name, string $description, string $pattern): self
@@ -98,5 +98,4 @@ class TypeString extends JsonSchemaType
 
         return $typeString;
     }
-
 }
