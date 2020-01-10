@@ -1,0 +1,34 @@
+name: Coding standard
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions:
+          - 7.3
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup PHP, with composer
+        uses: shivammathur/setup-php@v1
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run ECS
+        run: vendor/bin/ecs check src --no-progress-bar -vvv
